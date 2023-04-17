@@ -1,10 +1,16 @@
 import axios from "axios";
 import React from "react";
+import { useContext } from "react"
 import styled from "styled-components";
+
+import UserContext from "../contexts/UserContext"
+
 
 export default function Certificate() {
 	const [selectedFile, setSelectedFile] = React.useState(null);
 	const [password, setPassword] = React.useState(null);
+
+	const { userData } = useContext(UserContext);
 
 	const handleFileUpload = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -30,8 +36,7 @@ export default function Certificate() {
 		axios.post("http://localhost:7000/auth/certificate/", formData, {
 			headers: {
 				Authorization:
-					"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2ODE0MzM5ODV9.h7Ayl0C2WMdijkiZ550J3nOLe_yo9EzxQ3oHMg6dyG8",
-				"Content-Type": "multipart/form-data",
+					`Bearer ${userData.token}`,
 			},
 		});
 	}
