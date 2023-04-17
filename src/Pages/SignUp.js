@@ -157,6 +157,9 @@ const BoxRigth = styled.div`
 	align-items: center;
 	overflow: scroll;
 	flex-direction: column;
+	::-webkit-scrollbar {
+  		display: none;
+	}
 	@media (max-width: 800px){
 		width: 50vw;
 	}

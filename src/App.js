@@ -13,6 +13,7 @@ import useToken from "./hooks/useToken";
 import Dashboard from "./Pages/Dashboard";
 import SignUp from "./Pages/SignUp";
 import GlobalStyle from "./styles/GlobalStyle";
+import Home from "./Pages/Home";
 
 export default function App() {
 	return (
@@ -29,7 +30,8 @@ export default function App() {
 								<Dashboard />
 							</ProtectedRouteGuard>
 						}
-					>
+					>	
+						<Route path="home" element={<Home/>} />
 						<Route path="certificate" element={<Certificate />} />
 					</Route>
 				</Routes>
