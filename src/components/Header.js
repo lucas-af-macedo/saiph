@@ -33,7 +33,7 @@ export default function Header(){
                         <Button onClick={()=>navigateTo('/dashboard/cadastros')}>Cadastros</Button>
                         <Button onClick={()=>navigateTo('/dashboard/nfes')}>Consultar NFes</Button>
                         <Button onClick={()=>navigateTo('/dashboard/certificate')}>Cadastrar Certificado</Button>
-                        <Button>Perfil</Button>
+                        <Button onClick={()=>navigateTo('/dashboard/perfil')}>Perfil</Button>
                     </BoxButtons>
                     <UserAndOptions>
                         <h2>Bem vindo(a), {userData.name}</h2>
@@ -49,7 +49,7 @@ export default function Header(){
                                     <Button onClick={()=>navigateTo('/dashboard/cadastros')}>Cadastros</Button>
                                     <Button onClick={()=>navigateTo('/dashboard/nfes')}>Consultar NFes</Button>
                                     <Button onClick={()=>navigateTo('/dashboard/certificate')}>Cadastrar Certificado</Button>
-                                    <Button>Perfil</Button>
+                                    <Button onClick={()=>navigateTo('/dashboard/perfil')}>Perfil</Button>
                                     <ButtonExit onClick={exit}>Sair</ButtonExit>
                                 </div>
                             </BoxOptions>

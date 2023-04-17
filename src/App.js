@@ -14,6 +14,9 @@ import Dashboard from "./Pages/Dashboard";
 import SignUp from "./Pages/SignUp";
 import GlobalStyle from "./styles/GlobalStyle";
 import Home from "./Pages/Home";
+import Documents from "./Pages/Documents";
+import GetNfes from "./Pages/GetNfes";
+import Profile from "./Pages/Profile";
 
 export default function App() {
 	return (
@@ -33,6 +36,9 @@ export default function App() {
 					>	
 						<Route path="home" element={<Home/>} />
 						<Route path="certificate" element={<Certificate />} />
+						<Route path="cadastros" element={<Documents />} />
+						<Route path="nfes" element={<GetNfes />} />
+						<Route path="perfil" element={<Profile />} />
 					</Route>
 				</Routes>
 			</Router>
