@@ -14,12 +14,12 @@ export default function Header(){
         navigate('/')
     }
 
-    function openOptions(){
-        setOptions(!options)
+    function openOptions(bollean){
+        setOptions(bollean)
     }
 
     function navigateTo(link){
-        openOptions()
+        openOptions(false)
         navigate(link)
     }
 
@@ -36,14 +36,14 @@ export default function Header(){
                         <Button onClick={()=>navigateTo('/dashboard/perfil')}>Perfil</Button>
                     </BoxButtons>
                     <UserAndOptions>
-                        <h2>Bem vindo(a), {userData.name}</h2>
+                        <h2>Olá, {userData.name}</h2>
                         <Exit>
                             <ion-icon onClick={exit} name="exit-outline"></ion-icon>
                         </Exit>
                         <Options>
-                            <ion-icon onClick={openOptions} name="menu-outline"></ion-icon>
+                            <ion-icon onClick={()=>openOptions(true)} name="menu-outline"></ion-icon>
                             {options?
-                            <BoxOptions onClick={openOptions}>
+                            <BoxOptions onClick={()=>openOptions(false)}>
                                 <div onClick={(e)=>e.stopPropagation()}>
                                     <Button onClick={()=>navigateTo('/dashboard/home')}>Home</Button>
                                     <Button onClick={()=>navigateTo('/dashboard/cadastros')}>Cadastros</Button>
