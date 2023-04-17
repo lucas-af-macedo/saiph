@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import styled from "styled-components";
+import { UserProvider } from "./contexts/UserContext";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+} from "react-router-dom";
+import Certificate from "./Pages/Certificate";
+import SignIn from "./Pages/SignIn";
+import useToken from "./hooks/useToken";
+import Dashboard from "./Pages/Dashboard";
+import SignUp from "./Pages/SignUp";
+import GlobalStyle from "./styles/GlobalStyle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+	return (
+		<UserProvider>
+			<Router>
+			<GlobalStyle />
+				<Routes>
+					<Route path="/" element={<SignIn />} />
+					<Route path="/sign-up" element={<SignUp />} />
+					<Route
+						path="/dashboard"
+						element={
+							<ProtectedRouteGuard>
+								<Dashboard />
+							</ProtectedRouteGuard>
+						}
+					>
+						<Route path="certificate" element={<Certificate />} />
+					</Route>
+				</Routes>
+			</Router>
+		</UserProvider>
+	);
 }
 
-export default App;
+function ProtectedRouteGuard({ children }) {
+	const token = useToken();
+
+	if (!token) {
+		return <Navigate to="/" />;
+	}
+
+	return <>{children}</>;
+}
+
